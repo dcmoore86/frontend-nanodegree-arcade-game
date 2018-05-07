@@ -25,8 +25,8 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
       //reset bug's location, change speed, and change location once offscreen
       this.setStartLocation();
-      //this.y = this.bugLocations[randomIntFromInterval(0,this.bugLocations.length-1)];
-      //this.x+=(dt*this.bugSpeeds[randomIntFromInterval(0,this.bugSpeeds.length-1)]);
+      this.y = this.bugLocations[randomIntFromInterval(0,this.bugLocations.length-1)];
+      this.x+=(dt*this.bugSpeeds[randomIntFromInterval(0,this.bugSpeeds.length-1)]);
     }
     //reset player back to start position after colliding with any bug
     if (this.checkCollisions()) {
