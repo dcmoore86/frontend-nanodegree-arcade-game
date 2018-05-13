@@ -30,7 +30,7 @@ Enemy.prototype.update = function(dt) {
     }
     //reset player back to start position after colliding with any bug
     if (this.checkCollisions()) {
-         setTimeout(() => {player.setStartLocation()}, 100);
+         setTimeout(() => {player.setStartLocation();}, 100);
     }
 
 };
@@ -61,12 +61,15 @@ const Player = function() {
   this.y;
   this.width = 71;
   this.height = 43;
+  this.score = 0;
 };
 
-//Set player back to start location if the player touches the water
+//Set player back to start location and increase the score by 1 point
+//if the player touches the water
 Player.prototype.update = function() {
   if (this.y === -32) {
-    setTimeout(() => {this.setStartLocation()}, 100);
+    this.setStartLocation();
+    score_div.innerHTML = this.score+=1;
   }
 };
 
@@ -108,7 +111,7 @@ function randomIntFromInterval(min,max)
 player = new Player();
 player.setStartLocation();
 
-allEnemies = []
+allEnemies = [];
 for (let i = 0; i < 3; i++) {
   allEnemies.push(new Enemy());
   allEnemies[i].setStartLocation();
@@ -127,3 +130,5 @@ document.addEventListener('keyup', function(e) {
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+const score_div = document.querySelector('.score');
