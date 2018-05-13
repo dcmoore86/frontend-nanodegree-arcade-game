@@ -30,7 +30,7 @@ Enemy.prototype.update = function(dt) {
     }
     //reset player back to start position after colliding with any bug
     if (this.checkCollisions()) {
-         setTimeout(() => {player.setStartLocation();}, 100);
+      player.setStartLocation();
     }
 
 };
